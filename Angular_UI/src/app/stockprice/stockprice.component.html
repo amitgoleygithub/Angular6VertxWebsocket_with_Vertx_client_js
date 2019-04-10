@@ -1,0 +1,64 @@
+
+<html>
+
+<head>
+
+
+</head>
+  <body>
+    
+
+ <div style="text-align: center; background-color:cornflowerblue; font-size: x-large;border:1px solid black;">
+       Welcome to Live Stock prices website
+  </div>     
+
+   <br>
+
+  <div style="width:20%; text-align: left; font-size: x-large;">
+      <button id="pricebutton" (click)="getStockPrices()"> Click Here to show All Stock prices</button>
+ </div>   
+
+  <br>  <br>  <br>
+
+ <div id="stockpricetable" style="width:60%; text-align: left; font-size: x-large;border:1px darksalmon;">
+    <table mat-table [dataSource]="dataSource" matSort  style="width:95%;" >
+ 
+        <ng-container matColumnDef="company">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Company. </th>
+          <td mat-cell *matCellDef="let element"> {{element.company}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="datetime">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date & Time. </th>
+          <td mat-cell *matCellDef="let element"> {{element.datetime}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Price. </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true" ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+    
+      </table>
+    
+      <!--
+      <mat-paginator style="width:80%;align-content: right;"  #paginator
+        [length] = "dataSource.data.length"
+        [pageIndex]="0"
+        [pageSize]="50"
+        [pageSizeOptions]="[10,20,50,100]"
+        [showFirstLastButtons]="true"
+        >
+      </mat-paginator>
+      
+      -->
+
+</div>   
+
+
+
+</body>
+</html>
